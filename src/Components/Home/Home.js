@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import './Home.css'
 import { FaBeer } from 'react-icons/fa';
+import { useForm } from 'react-hook-form';
+import PersonalInfo from '../personalInfo/PersonalInfo';
 
 
 const Home = () => {
   const [openTab, setOpenTab] = useState(1)
   const [color, setColor] = useState('red')
+  const { register, handleSubmit } = useForm();
+  const [personalInfo, setPersonalInfo] = useState(null);
+
+
+
+
   return (
-    <div className='home-bg flex justify-center items-center'>
+    <div className='home-bg flex justify-center '>
       <>
-        <div className='w-4/5 mx-auto p-10'>
+        <div className='md:w-4/5 mx-auto p-10'>
           <div className="flex px-5 table-bg flex-wrap">
             <div className="w-full">
               <ul
@@ -49,7 +57,7 @@ const Home = () => {
                     href="#link2"
                     role="tablist"
                   >
-                    Settings
+                    Business Details
                   </a>
                 </li>
                 <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -67,22 +75,29 @@ const Home = () => {
                     href="#link3"
                     role="tablist"
                   >
-                    Options
+                    Loan Application Details
                   </a>
                 </li>
               </ul>
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+
+
+              <div className="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded">
                 <div className="px-4 py-5 flex-auto">
                   <div className="tab-content tab-space">
+
+                    {/* personal Information */}
+
                     <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                      <p>
-                        Collaboratively administrate empowered markets via
-                        plug-and-play networks. Dynamically procrastinate B2C users
-                        after installed base benefits.
-                        <br />
-                        <br /> Dramatically visualize customer directed convergence
-                        without revolutionary ROI.
-                      </p>
+
+                      <PersonalInfo
+                        register={register}
+                        handleSubmit={handleSubmit}
+                        personalInfo={personalInfo}
+                        setPersonalInfo={setPersonalInfo}
+                        setOpenTab={setOpenTab}
+                      ></PersonalInfo>
+
+
                     </div>
                     <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                       <p>
