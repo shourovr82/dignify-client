@@ -3,6 +3,8 @@ import './Home.css'
 import { FaBeer } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import PersonalInfo from '../personalInfo/PersonalInfo';
+import BusinessDetails from '../BusinessDetails/BusinessDetails';
+import LoanDetails from '../LoanDetails/LoanDetails';
 
 
 const Home = () => {
@@ -10,6 +12,8 @@ const Home = () => {
   const [color, setColor] = useState('red')
   const { register, handleSubmit } = useForm();
   const [personalInfo, setPersonalInfo] = useState(null);
+  const [businessDetails, setBusinessDetails] = useState(null);
+  const [loanDetails, setLoanDetails] = useState(null);
 
 
 
@@ -21,7 +25,7 @@ const Home = () => {
           <div className="flex px-5 table-bg flex-wrap">
             <div className="w-full">
               <ul
-                className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
+                className="flex   mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
                 role="tablist"
               >
                 <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -29,8 +33,8 @@ const Home = () => {
                     className={
                       "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                       (openTab === 1
-                        ? "text-white bg-" + color + "-600"
-                        : "text-" + color + "-600 bg-white")
+                        ? "text-white bg-cyan-700"
+                        : "hidden")
                     }
                     onClick={() => {
                       setOpenTab(1);
@@ -47,8 +51,8 @@ const Home = () => {
                     className={
                       "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                       (openTab === 2
-                        ? "text-white bg-" + color + "-600"
-                        : "text-" + color + "-600 bg-white")
+                        ? "text-white bg-cyan-700"
+                        : "hidden")
                     }
                     onClick={() => {
                       setOpenTab(2);
@@ -65,8 +69,8 @@ const Home = () => {
                     className={
                       "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                       (openTab === 3
-                        ? "text-white bg-" + color + "-600"
-                        : "text-" + color + "-600 bg-white")
+                        ? "text-white bg-cyan-700"
+                        : "hidden")
                     }
                     onClick={() => {
                       setOpenTab(3);
@@ -99,26 +103,41 @@ const Home = () => {
 
 
                     </div>
+
+                    {/*  business Details */}
                     <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                      <p>
-                        Completely synergize resource taxing relationships via
-                        premier niche markets. Professionally cultivate one-to-one
-                        customer service with robust ideas.
-                        <br />
-                        <br />
-                        Dynamically innovate resource-leveling customer service for
-                        state of the art customer service.
-                      </p>
+
+
+
+                      <BusinessDetails
+                        register={register}
+                        handleSubmit={handleSubmit}
+                        businessDetails={businessDetails}
+                        setBusinessDetails={setBusinessDetails}
+                        setOpenTab={setOpenTab}
+                      >
+
+                      </BusinessDetails>
+
+                      {/*  Loan Details */}
+
                     </div>
                     <div className={openTab === 3 ? "block" : "hidden"} id="link3">
-                      <p>
-                        Efficiently unleash cross-media information without
-                        cross-media value. Quickly maximize timely deliverables for
-                        real-time schemas.
-                        <br />
-                        <br /> Dramatically maintain clicks-and-mortar solutions
-                        without functional solutions.
-                      </p>
+                      <LoanDetails
+                        loanDetails={loanDetails}
+                        setLoanDetails={setLoanDetails}
+                        businessDetails={businessDetails}
+                        personalInfo={personalInfo}
+                        register={register}
+                        handleSubmit={handleSubmit}
+                        setOpenTab={setOpenTab}
+                      >
+
+                      </LoanDetails>
+
+
+
+
                     </div>
                   </div>
                 </div>
@@ -131,7 +150,7 @@ const Home = () => {
 
 
 
-    </div>
+    </div >
   );
 };
 
