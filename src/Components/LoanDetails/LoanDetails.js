@@ -1,24 +1,43 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
-const LoanDetails = ({ handleSubmit, register, personalInfo, businessDetails, setLoanDetails, loanDetails, setOpenTab }) => {
+const LoanDetails = ({ handleSubmit, register, setOpenTab, reset: hookReset }) => {
 
 
-  const handleSubmitAllDetails = (data) => {
+
+  const handleSubmitAllDetails = (data, e) => {
+    // console.log(e);
     if (data) {
-      setLoanDetails(data)
-    }
-    if (loanDetails) {
+      fetch('http://localhost:8080/applyloan', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(res => res.json())
+        .then(result => {
+          toast.success('Your Loan Application Successfully Sent.', {
+            style: {
+              border: '1px solid #713200',
+              padding: '16px',
+              color: '#713200',
+            },
+            iconTheme: {
+              primary: '#713200',
+              secondary: '#FFFAEE',
+            },
+          });
+          hookReset()
+          e.target.reset();
+          setOpenTab(4)
+        })
 
     }
+
 
   }
-
-
-  useEffect(() => {
-    if (loanDetails) {
-      console.log(loanDetails);
-    }
-  }, [loanDetails])
 
 
   return (

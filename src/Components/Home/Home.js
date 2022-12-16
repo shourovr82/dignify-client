@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
 import './Home.css'
-import { FaBeer } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import PersonalInfo from '../personalInfo/PersonalInfo';
 import BusinessDetails from '../BusinessDetails/BusinessDetails';
 import LoanDetails from '../LoanDetails/LoanDetails';
+import Success from '../Success/Success';
 
 
 const Home = () => {
   const [openTab, setOpenTab] = useState(1)
-  const [color, setColor] = useState('red')
-  const { register, handleSubmit } = useForm();
-  const [personalInfo, setPersonalInfo] = useState(null);
-  const [businessDetails, setBusinessDetails] = useState(null);
-  const [loanDetails, setLoanDetails] = useState(null);
-
-
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
 
   return (
-    <div className='home-bg flex justify-center '>
+    <div className='home-bg flex justify-center items-center'>
       <>
         <div className='md:w-4/5 mx-auto p-10'>
-          <div className="flex px-5 table-bg flex-wrap">
-            <div className="w-full">
+          <div className="flex px-5 table-bg  flex-wrap">
+            <div className="w-full p-10">
               <ul
                 className="flex   mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
                 role="tablist"
@@ -33,7 +27,7 @@ const Home = () => {
                     className={
                       "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                       (openTab === 1
-                        ? "text-white bg-cyan-700"
+                        ? "text-white border border-[#079cc259]"
                         : "hidden")
                     }
                     onClick={() => {
@@ -64,6 +58,7 @@ const Home = () => {
                     Business Details
                   </a>
                 </li>
+
                 <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
                   <a
                     className={
@@ -82,10 +77,33 @@ const Home = () => {
                     Loan Application Details
                   </a>
                 </li>
+
+                <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                  <a
+                    className={
+                      "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                      (openTab === 4
+                        ? "text-white bg-cyan-700"
+                        : "hidden")
+                    }
+                    onClick={() => {
+                      setOpenTab(4);
+                    }}
+                    data-toggle="tab"
+                    href="#link4"
+                    role="tablist"
+                  >
+                    Success
+                  </a>
+                </li>
+
+
+
+
               </ul>
 
 
-              <div className="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded">
+              <div className="relative flex  flex-col min-w-0 break-words  w-full mb-6 ">
                 <div className="px-4 py-5 flex-auto">
                   <div className="tab-content tab-space">
 
@@ -96,9 +114,8 @@ const Home = () => {
                       <PersonalInfo
                         register={register}
                         handleSubmit={handleSubmit}
-                        personalInfo={personalInfo}
-                        setPersonalInfo={setPersonalInfo}
                         setOpenTab={setOpenTab}
+
                       ></PersonalInfo>
 
 
@@ -112,9 +129,8 @@ const Home = () => {
                       <BusinessDetails
                         register={register}
                         handleSubmit={handleSubmit}
-                        businessDetails={businessDetails}
-                        setBusinessDetails={setBusinessDetails}
                         setOpenTab={setOpenTab}
+
                       >
 
                       </BusinessDetails>
@@ -124,21 +140,23 @@ const Home = () => {
                     </div>
                     <div className={openTab === 3 ? "block" : "hidden"} id="link3">
                       <LoanDetails
-                        loanDetails={loanDetails}
-                        setLoanDetails={setLoanDetails}
-                        businessDetails={businessDetails}
-                        personalInfo={personalInfo}
                         register={register}
                         handleSubmit={handleSubmit}
                         setOpenTab={setOpenTab}
+                        reset={reset}
                       >
 
                       </LoanDetails>
 
 
-
+                    </div>
+                    {/*  success page */}
+                    <div className={openTab === 4 ? "block" : "hidden"} id="link4">
+                      < Success></Success>
 
                     </div>
+
+
                   </div>
                 </div>
               </div>

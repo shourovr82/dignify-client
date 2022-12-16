@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-const PersonalInfo = ({ register, handleSubmit, setPersonalInfo, personalInfo, setOpenTab }) => {
+const PersonalInfo = ({ register, handleSubmit, setOpenTab }) => {
   const [termCheck, setTermCheck] = useState(true);
 
-
-  const handlePersonalDetails = (data) => {
+  const handlePersonalDetails = (data, e) => {
     if (data) {
-      setPersonalInfo(data)
       setOpenTab(2)
     }
   }
+
+
 
 
   return (

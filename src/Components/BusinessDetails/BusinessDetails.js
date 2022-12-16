@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const BusinessDetails = ({ setOpenTab, setBusinessDetails, businessDetails, handleSubmit, register }) => {
-
+const BusinessDetails = ({ setOpenTab, handleSubmit, register }) => {
 
   const handleBusinessDetails = (data) => {
     if (data) {
-      setBusinessDetails(data)
       setOpenTab(3)
     }
   }
+
 
 
   return (
