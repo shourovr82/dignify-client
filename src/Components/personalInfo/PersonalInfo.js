@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const PersonalInfo = ({ register, handleSubmit, setPersonalInfo, personalInfo, setOpenTab }) => {
-  const [termCheck, setTermCheck] = useState(false);
+  const [termCheck, setTermCheck] = useState(true);
 
 
   const handlePersonalDetails = (data) => {
@@ -82,10 +82,10 @@ const PersonalInfo = ({ register, handleSubmit, setPersonalInfo, personalInfo, s
           <div>
           </div>
         </div>
-
         <div className='flex justify-end'>
-          <button type='submit' className="btn border-0 focus:border-transparent rounded-lg  w-full bg-gradient-to-r from-cyan-500 to-blue-900 max-w-xs focus:text-white text-slate-300">Next</button>
+          <button type='submit' disabled={termCheck} className={`btn disabled:text-slate-600 text-slate-300 border-0 focus:border-transparent rounded-lg  w-full bg-gradient-to-r from-cyan-500 to-blue-900 max-w-xs focus:text-white `} >next</button>
         </div>
+
       </form>
 
 

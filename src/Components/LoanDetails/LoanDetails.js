@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const LoanDetails = ({ handleSubmit, register, personalInfo, businessDetails, setLoanDetails, loanDetails, setOpenTab }) => {
 
@@ -14,7 +14,11 @@ const LoanDetails = ({ handleSubmit, register, personalInfo, businessDetails, se
   }
 
 
-
+  useEffect(() => {
+    if (loanDetails) {
+      console.log(loanDetails);
+    }
+  }, [loanDetails])
 
 
   return (
