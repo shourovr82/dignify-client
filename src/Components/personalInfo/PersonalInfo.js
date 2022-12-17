@@ -13,25 +13,25 @@ const PersonalInfo = ({ register, handleSubmit, setOpenTab }) => {
 
 
   return (
-    <div>
+    <div >
       <form
         onSubmit={handleSubmit(handlePersonalDetails)}
-        className='flex flex-col gap-3 w-4/5 mx-auto'>
+        className='flex flex-col gap-3  w-full md:w-4/5 mx-auto'>
 
         {/* Name */}
-        <div className='flex justify-center gap-3'>
+        <div className='md:flex justify-center gap-3'>
           {/* First Name */}
 
           <div className='w-full '>
             <label htmlFor="firstname" className='text-white font-thin'>First Name</label>
 
-            <input {...register("firstName")} required type="text" placeholder="Type here" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
+            <input {...register("firstName")} required type="text" placeholder="Type Your First Name" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
           </div>
 
           {/* Last Name */}
           <div className='w-full '>
             <label htmlFor="lastname" className='text-white font-thin'>Last Name</label>
-            <input {...register("lastname")} required placeholder="Type here" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
+            <input {...register("lastname")} required placeholder="Type Your Last Name" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
           </div>
         </div>
 
@@ -42,7 +42,7 @@ const PersonalInfo = ({ register, handleSubmit, setOpenTab }) => {
           {/* Email */}
           <div className='w-full '>
             <label htmlFor="email" className='text-white font-thin'>Your Email</label>
-            <input required {...register("email")} type="email" placeholder="Type here" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
+            <input required {...register("email")} type="email" placeholder="Type Your Email" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
           </div>
           {/* Phone Number */}
           <div className='w-full '>
@@ -66,6 +66,30 @@ const PersonalInfo = ({ register, handleSubmit, setOpenTab }) => {
         </div>
 
 
+
+        {/* Birth Date */}
+        <div className='flex justify-center gap-3'>
+          {/* Age*/}
+          <div className='w-full '>
+            <label htmlFor="birthdate" className='text-white font-thin'>Your Birth Date</label>
+            <input required  {...register("birthdate")} type="date" placeholder="Type Your Birth Date" className="w-full input input-bordered  border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
+          </div>
+          {/* Address */}
+          <div className='w-full '>
+
+            <label htmlFor="maritalstatus" className='text-white font-thin'> Your Marital Status</label>
+
+            <select className="select select-info w-full    border-[#00defc59] focus:border-transparent rounded-lg   bg-[#0072721a] focus:text-cyan-600 text-slate-300 ">
+
+              <option {...register("maritalstatus")} defaultValue>Not Prefer to say</option>
+              <option>Single</option>
+              <option>Married</option>
+              <option>Devorced</option>
+            </select>
+          </div>
+        </div>
+
+
         {/* privacy policy */}
         <div className='flex justify-center gap-3'>
           <div className="form-control">
@@ -82,8 +106,11 @@ const PersonalInfo = ({ register, handleSubmit, setOpenTab }) => {
           <div>
           </div>
         </div>
-        <div className='flex justify-end'>
-          <button type='submit' disabled={termCheck} className={`btn disabled:text-slate-600 text-slate-300 border-0 focus:border-transparent rounded-lg  w-full bg-gradient-to-r from-cyan-500 to-blue-900 max-w-xs focus:text-white `} >next</button>
+
+
+
+        <div className='flex justify-center md:justify-end'>
+          <button type='submit' disabled={termCheck} className={`btn disabled:text-slate-600 text-slate-300 border-0 focus:border-transparent rounded-lg  w-full bg-gradient-to-r from-cyan-500 to-blue-900 md:max-w-xs focus:text-white `} >next</button>
         </div>
 
       </form>

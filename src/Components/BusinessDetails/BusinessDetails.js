@@ -11,13 +11,13 @@ const BusinessDetails = ({ setOpenTab, handleSubmit, register }) => {
 
 
   return (
-    <div>
+    <div className=''>
       <form
         onSubmit={handleSubmit(handleBusinessDetails)}
-        className='flex flex-col gap-3 w-4/5 mx-auto'>
+        className='flex flex-col  gap-3 md:w-4/5 mx-auto'>
 
         {/* Applicant Business Name  */}
-        <div className='flex justify-center gap-3'>
+        <div className='md:flex justify-center gap-3'>
           {/* Business Name */}
 
           <div className='w-full '>
@@ -36,8 +36,8 @@ const BusinessDetails = ({ setOpenTab, handleSubmit, register }) => {
 
 
 
-        {/* Email and Phone Number */}
-        <div className='flex justify-center gap-3'>
+        {/* Business Address and phone number */}
+        <div className='w-full'>
           {/* Email */}
           <div className='w-full '>
             <label htmlFor="businessadress" className='text-white font-thin'>Your Business Adress</label>
@@ -49,6 +49,30 @@ const BusinessDetails = ({ setOpenTab, handleSubmit, register }) => {
             <input required {...register("companyphone")} type="number" placeholder="Your Business Phone Number" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
           </div>
         </div>
+
+        {/* No. employer */}
+        <div className='w-full'>
+          {/* employer */}
+          <div className='w-full '>
+            <label htmlFor="businessadress" className='text-white font-thin'>How many employees work your company?  </label>
+            <input required {...register("noofemployer")} type="text" placeholder="No. of employer" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
+          </div>
+          {/* Business Tax Id */}
+          <div className='w-full '>
+            <label htmlFor="companyphone" className='text-white font-thin'>Your Business Tax Id</label>
+            <input required {...register("taxid")} type="text" placeholder="Type your Business Tax Id" className="w-full input input-bordered border-[#00defc59] focus:border-transparent rounded-lg input-primary  bg-[#0072721a] focus:text-white text-slate-300" />
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
 
 
         {/* next or back */}

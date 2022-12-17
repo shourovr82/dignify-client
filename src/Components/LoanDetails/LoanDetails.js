@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import loadingAnimation from '../../photos/loading.svg'
 
 const LoanDetails = ({ handleSubmit, register, setOpenTab, reset: hookReset }) => {
+  const [loading, setLoading] = useState(false)
 
 
 
   const handleSubmitAllDetails = (data, e) => {
     // console.log(e);
     if (data) {
+      setLoading(true)
       fetch('http://localhost:8080/applyloan', {
         method: 'POST',
         headers: {
@@ -18,6 +20,7 @@ const LoanDetails = ({ handleSubmit, register, setOpenTab, reset: hookReset }) =
       })
         .then(res => res.json())
         .then(result => {
+          setLoading(false)
           toast.success('Your Loan Application Successfully Sent.', {
             style: {
               border: '1px solid #713200',
@@ -41,10 +44,14 @@ const LoanDetails = ({ handleSubmit, register, setOpenTab, reset: hookReset }) =
 
 
   return (
-    <div>
+    <div className=' flex justify-center'>
+
+
+
       <form
         onSubmit={handleSubmit(handleSubmitAllDetails)}
-        className='flex flex-col gap-3 w-4/5 mx-auto'>
+        className='flex flex-col gap-3 md:w-4/5 relative mx-auto'>
+        {loading && <><img className='absolute left-1/3' src={loadingAnimation} alt="" /></>}
 
         {/* Loan */}
         <div className='flex justify-center gap-3'>
@@ -80,7 +87,7 @@ const LoanDetails = ({ handleSubmit, register, setOpenTab, reset: hookReset }) =
           {/* Loan Tenure */}
           <div className='w-full '>
             <label htmlFor="whyloan" className='text-white font-thin'>Tell us why you are applying for Loan</label>
-            <textarea className="textarea  h-24 textarea-info w-full input  border-[#00defc59] focus:border-transparent rounded-lg bg-[#0072721a] focus:text-white text-slate-300" placeholder="Bio"></textarea>
+            <textarea className="textarea  h-24 textarea-info w-full input  border-[#00defc59] focus:border-transparent rounded-lg bg-[#0072721a] focus:text-white text-slate-300" placeholder="Tell us why you are applying for Loan "></textarea>
 
 
           </div>
