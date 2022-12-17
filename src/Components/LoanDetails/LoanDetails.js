@@ -11,7 +11,7 @@ const LoanDetails = ({ handleSubmit, register, setOpenTab, reset: hookReset }) =
     // console.log(e);
     if (data) {
       setLoading(true)
-      fetch('http://localhost:8080/applyloan', {
+      fetch('https://dignify-server.vercel.app/applyloan', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
